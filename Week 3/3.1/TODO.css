@@ -1,0 +1,14 @@
+body {
+    background-color: aquamarine;
+}
+
+.todoitem{
+    display: flex;
+}
+
+button {
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+}

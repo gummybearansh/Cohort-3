@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="TODO.css">
+    <title>TO DO APP</title>
+</head>
+<body>
+    <h1>To Do List</h1> 
+    <div id="todolist">
+        <div id="todo-1" class="todoitem">
+            <h4>Go to Class</h4>
+            <button onclick="deleteToDo(1)">Mark as Done</button>
+        </div>
+        <div id="todo-2" class="todoitem">
+            <h4>1 Lakh Per month</h4>
+            <button onclick="deleteToDo(2)">Mark as Done</button>
+        </div>
+        <div id="todo-3" class="todoitem">
+            <h4>Specialist in 3 months</h4>
+            <button onclick="deleteToDo(3)">Mark as Done</button>
+        </div>
+    </div>
+    <div>
+        <input type="text" placeholder="Add a To Do"></input>
+        <button onclick="addTODO()">Add To Do</button>
+    </div>
+    <script src="TODO.js"></script>
+</body>
+</html>

@@ -1,7 +1,8 @@
 // what all languages can your browser interpret? 
 // css, js, WebAssembly. it can technically run c++/Rust code that is compiled down to WebAsm 
 
-// Javascript is 1. Interpreted language -> executed line by line at run-time by the JS engine in the browser or server environment, rather than being compiled into machine code beforehand. 
+// Javascript
+// 1. Interpreted language -> executed line by line at run-time by the JS engine in the browser or server environment, rather than being compiled into machine code beforehand. 
 // Upside -> one less step to do before running code 
 // DownSide -> performance overhead (compile + run at every line) 
 //          -> more prone to runtime errors 
