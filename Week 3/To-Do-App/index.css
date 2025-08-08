@@ -8,7 +8,7 @@ body {
     max-width: 500px;
     margin: 0 auto;
     background: #fff;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
@@ -40,7 +40,7 @@ body {
 .main-heading {
   font-size: 4rem; /* Large text */
   font-weight: bold;
-  font-family: 'Arial', sans-serif;
+  font-family:'Trebuchet MS', sans-serif; 
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ce79);
   background-size: 400%; /* Large size for smooth animation */
   -webkit-background-clip: text;
