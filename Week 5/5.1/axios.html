@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios example</title>
+    <!-- importing axios from cloudflare cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+</head>
+<body>
+    <button id="fetchPostButton" onclick="axiosFetchPosts()">Next Post</button>
+    <div id="posts"></div>
+    <script>
+        let n = 1;
+        async function axiosFetchPosts(){
+            const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${n}`);
+
+            const post = document.createElement("div");
+            post.id = `post ${n}`;
+            const postTitle = document.createElement('h1');
+            postTitle.textContent = res.data.title;
+            const postBody = document.createElement("h3");
+            postBody.textContent = res.data.body;
+            const line = document.createElement("hr");
+            post.appendChild(postTitle)
+            post.appendChild(postBody);
+            post.appendChild(line);
+
+
+            document.getElementById("posts").appendChild(post);
+            n++;
+        }
+
+
+    </script>
+</body>
+</html>

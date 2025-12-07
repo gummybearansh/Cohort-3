@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Frontend</title>
+</head>
+<body>
+    <input type="text" id="a" placeholder="Enter Number 1"> 
+    <input type="text" id="b" placeholder="Enter Number 2">
+    <select id="operation">
+        <option id="sum" value="sum">Sum</option>
+        <option id="difference" value="difference">difference</option>
+        <option id="multiply" value="multiply">multiply</option>
+        <option id="divide" value="divide">divide</option>
+    </select>
+    <button onclick="calculate()" id="calculate">Calculate</button>
+
+    <h1 id="answer"></h1>
+
+    <script>
+        async function calculate(){
+            const a = parseInt(document.getElementById("a").value);
+            const b = parseInt(document.getElementById("b").value);
+            const operation = document.getElementById("operation").value;            
+
+            const response = await fetch(`http://localhost:3000/${operation}/${a}/${b}`)
+            const data = await response.json();
+
+            document.getElementById("answer").innerText = `Answer: ${data.answer}`
+
+        }
+    </script>
+</body>
+</html>

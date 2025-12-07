@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(express.json()) // uses bodyparser only under the hood 
+
 // a middleware that logs the request's METHOD, URL and timestamp
 function metadataMiddleware(req, res, next){
     console.log(req.method);

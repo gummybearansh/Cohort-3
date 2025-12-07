@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack app</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <input type="text" id="signUpUsername" placeholder="Username">
+    <br>
+    <input type="text" id="signUpPassword" placeholder="Password">
+    <br>
+    <button onclick="signUp()">Sign Up</button>
+    <br>
+    <h3 id="signUpMessage"></h3>
+    <hr>
+
+    <input type="text" id="signInUsername" placeholder="Username">
+    <br>
+    <input type="text" id="signInPassword" placeholder="Password">
+    <br>
+    <button onclick="signIn()">Sign In</button>
+    <br>
+    <h3 id="signInMessage"></h3>
+    <hr>
+
+    <button onclick="viewDetails()">View Details</button>
+    <br>
+    <h3 id="userDetails"></h3>
+    <h3 id="viewDetailsMessage"></h3>
+    <br>
+    <hr>
+    <button onclick="logout()">LogOut</button>
+
+    <script>
+        async function signUp(){
+            const username = document.querySelector("#signUpUsername").value
+            const password = document.querySelector("#signUpPassword").value
+
+            const response = await axios.post('http://localhost:3000/signup', {
+                username, 
+                password
+            })
+
+            document.querySelector("#signUpMessage").innerText = response.data.msg;
+        }
+
+        async function signIn(){
+            const username = document.querySelector("#signInUsername").value;
+            const password = document.querySelector("#signInPassword").value;
+
+            const response = await axios.post('http://localhost:3000/signin', {
+                username, 
+                password
+            })
+
+            if (response.data.token){
+                localStorage.setItem("AuthToken", response.data.token);
+            }
+
+            document.querySelector("#signInMessage").innerText = response.data.msg;
+        }
+
+        async function viewDetails(){
+            const token = localStorage.getItem("AuthToken");
+
+            const response = await axios.get('http://localhost:3000/me', {
+                headers: {
+                    "authorization": token
+                }
+            })
+            
+            console.log(response.data);
+            if (response.status == 404){
+                document.querySelector("#viewDetailsMessage").innerText = "Please Log In to view your details"
+                return;
+            }
+
+            // document.querySelector("#viewDetailsMessage").innerText =  `${response.data.msg} \n ${response.data.username} \n ${response.data.password}`
+            document.querySelector("#viewDetailsMessage").innerText = response.data.msg;
+        }
+
+        function logout(){
+            localStorage.removeItem("AuthToken");
+        }
+    </script>
+</body>
+</html>
